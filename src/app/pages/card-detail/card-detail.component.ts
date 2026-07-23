@@ -79,7 +79,6 @@ export class CardDetailComponent implements OnInit {
     }
 
     private renderChart(analytics: CardAnalytics) {
-        console.log('Rendering chart with data:', analytics.priceHistory);
         if (this.chart) {
             this.chart.destroy();
         }
