@@ -1,0 +1,82 @@
+<div class="max-w-7xl mx-auto px-4 py-8">
+    @if (loading()) {
+    <div class="text-center py-20 text-slate-400 animate-pulse">Chargement de la carte...</div>
+    } @else if (analytics()) {
+    @let card = analytics()!;
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Visuel Carte -->
+        <div class="flex flex-col items-center">
+            @if (scryfallData(); as scryfall) {
+            <img [src]="getCardImageUrl(scryfall)" [alt]="scryfall.name"
+                class="w-full max-w-sm rounded-2xl shadow-2xl border border-slate-800 hover:scale-105 transition duration-300" />
+            }
+        </div>
+
+        <!-- Métriques & Graphique -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Entête & Badge Recommandation Backend -->
+            <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-white">{{ scryfallData()?.name }}</h1>
+                    <p class="text-slate-400 text-sm mt-1">ID: {{ card.scryfallId }}</p>
+                </div>
+
+                <!-- Recommandation -->
+                <div [class]="getRecommendationBadgeClass(card.recommendation.action)"
+                    class="px-4 py-3 rounded-xl border flex flex-col items-end">
+                    <span class="text-xs font-bold uppercase tracking-wider">Conseil Backend</span>
+                    <span class="text-xl font-black">{{ card.recommendation.action }}</span>
+                </div>
+            </div>
+
+            <!-- Explication du Conseil -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 text-slate-300 text-sm">
+                💡 <strong>Analyse :</strong> {{ card.recommendation.reason }}
+            </div>
+
+            <!-- Métriques Financières -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <span class="text-xs text-slate-500 uppercase font-semibold">Prix Actuel</span>
+                    <div class="text-2xl font-bold font-mono text-white mt-1">{{ card.currentPrice.toFixed(2) }} €</div>
+                    <span [class]="card.change24h >= 0 ? 'text-emerald-400' : 'text-rose-400'"
+                        class="text-xs font-mono">
+                        {{ card.change24h >= 0 ? '+' : '' }}{{ card.change24h }}% (24h)
+                    </span>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <span class="text-xs text-slate-500 uppercase font-semibold">Moyenne 30j</span>
+                    <div class="text-2xl font-bold font-mono text-slate-200 mt-1">{{ card.movingAverage30d.toFixed(2) }}
+                        €</div>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <span class="text-xs text-slate-500 uppercase font-semibold">Volatilité (σ)</span>
+                    <div class="text-2xl font-bold font-mono text-amber-400 mt-1">{{ card.volatility.toFixed(2) }}</div>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <span class="text-xs text-slate-500 uppercase font-semibold">Min / Max</span>
+                    <div class="text-sm font-bold font-mono text-slate-300 mt-2">
+                        <span class="text-emerald-400">{{ card.allTimeLow }}€</span> / <span class="text-rose-400">{{
+                            card.allTimeHigh }}€</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas Graphique -->
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                <h3 class="text-lg font-bold text-white mb-4">Historique de prix</h3>
+                <div class="h-64 relative">
+                    <canvas #chartCanvas></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    }
+</div>
