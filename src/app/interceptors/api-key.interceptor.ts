@@ -1,11 +1,11 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { environment } from '../../environments/environment.development';
 
 export const apiKeyInterceptor: HttpInterceptorFn = (req, next) => {
-    // Ajuste le nom du header ('X-API-KEY', 'X-Api-Key', etc.) selon ton Gateway
-    if (req.url.startsWith('http://localhost:8080')) {
+    if (req.url.startsWith(environment.apiUrl)) {
         const authReq = req.clone({
             setHeaders: {
-                'X-API-KEY': 'local_api_key'
+                'X-API-KEY': environment.apiKey
             }
         });
         return next(authReq);
