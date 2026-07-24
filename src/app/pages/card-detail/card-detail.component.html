@@ -6,11 +6,61 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        <!-- Visuel Carte -->
+        <!-- Visuel Carte & Liens Achat -->
         <div class="flex flex-col items-center">
             @if (scryfallData(); as scryfall) {
             <img [src]="getCardImageUrl(scryfall)" [alt]="scryfall.name"
                 class="w-full max-w-sm rounded-2xl shadow-2xl border border-slate-800 hover:scale-105 transition duration-300" />
+
+            <!-- Boutons Marketplace -->
+            <div class="w-full max-w-sm mt-6 space-y-2">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2 px-1">Acheter la
+                    carte</span>
+
+                <div class="grid grid-cols-1 gap-2">
+                    <!-- Cardmarket -->
+                    @if (card.purchaseUris.cardmarket) {
+                    <a [href]="card.purchaseUris.cardmarket" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <img src="https://www.google.com/s2/favicons?domain=cardmarket.com&sz=64" alt="Cardmarket"
+                                class="w-5 h-5 rounded" />
+                            <span class="text-sm font-medium group-hover:text-white">Cardmarket</span>
+                        </div>
+                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
+                            ↗</span>
+                    </a>
+                    }
+
+                    <!-- TCGplayer -->
+                    @if (card.purchaseUris.tcgplayer) {
+                    <a [href]="card.purchaseUris.tcgplayer" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <img src="https://www.google.com/s2/favicons?domain=tcgplayer.com&sz=64" alt="TCGplayer"
+                                class="w-5 h-5 rounded" />
+                            <span class="text-sm font-medium group-hover:text-white">TCGplayer</span>
+                        </div>
+                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
+                            ↗</span>
+                    </a>
+                    }
+
+                    <!-- Cardhoarder (MTGO) -->
+                    @if (card.purchaseUris.cardhoarder) {
+                    <a [href]="card.purchaseUris.cardhoarder" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <img src="https://www.google.com/s2/favicons?domain=cardhoarder.com&sz=64" alt="Cardhoarder"
+                                class="w-5 h-5 rounded" />
+                            <span class="text-sm font-medium group-hover:text-white">Cardhoarder</span>
+                        </div>
+                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
+                            ↗</span>
+                    </a>
+                    }
+                </div>
+            </div>
             }
         </div>
 
@@ -21,13 +71,11 @@
                 class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 p-6 rounded-2xl border border-slate-800">
                 <div>
                     <h1 class="text-3xl font-extrabold text-white">{{ scryfallData()?.name }}</h1>
-                    <p class="text-slate-400 text-sm mt-1">ID: {{ card.scryfallId }}</p>
                 </div>
 
                 <!-- Recommandation -->
                 <div [class]="getRecommendationBadgeClass(card.recommendation.action)"
                     class="px-4 py-3 rounded-xl border flex flex-col items-end">
-                    <span class="text-xs font-bold uppercase tracking-wider">Conseil Backend</span>
                     <span class="text-xl font-black">{{ card.recommendation.action }}</span>
                 </div>
             </div>
@@ -49,7 +97,7 @@
                 </div>
 
                 <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <span class="text-xs text-slate-500 uppercase font-semibold">Moyenne 30j</span>
+                    <span class="text-xs text-slate-500 uppercase font-semibold">Moyenne 30 j</span>
                     <div class="text-2xl font-bold font-mono text-slate-200 mt-1">{{ card.movingAverage30d.toFixed(2) }}
                         €</div>
                 </div>

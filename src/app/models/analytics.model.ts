@@ -35,6 +35,13 @@ export interface CardAnalytics {
     allTimeLow: number;
     recommendation: Recommendation;
     priceHistory: PricePoint[];
+    purchaseUris: PurchaseUris;
+}
+
+export interface PurchaseUris {
+    cardhoarder: string;
+    cardmarket: string;
+    tcgplayer: string;
 }
 
 // Scryfall DTO
