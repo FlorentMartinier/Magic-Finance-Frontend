@@ -70,5 +70,25 @@
             },
             "DELETE_TOOLTIP": "Supprimer l'alerte"
         }
+    },
+    "ANALYTICS": {
+        "ERROR": {
+            "NOT_FOUND": "Aucune donnée de prix trouvée pour cette carte."
+        },
+        "RECOMMENDATION": {
+            "INSUFFICIENT_DATA": "Données insuffisantes pour établir une recommandation.",
+            "INSUFFICIENT_HISTORY": "Données d'historique insuffisantes pour établir une tendance.",
+            "BUY_UNDER_MA30": "Le prix actuel est à {{percentage}}% sous la moyenne mobile à 30 jours.",
+            "SELL_ABOVE_MA30": "Le prix actuel est à {{percentage}}% au-dessus de sa moyenne 30j (Risque de correction).",
+            "HOLD_NORMAL_RANGE": "Le prix oscille dans sa zone de valeur habituelle.",
+            "BUY_UNDERVALUED": "Prix sous-évalué : en baisse de {{drop}}% par rapport à sa moyenne sur 30 jours ({{avgPrice}} €).",
+            "SELL_PEAK": "Prix au sommet : en hausse de {{rise}}% par rapport à sa moyenne sur 30 jours ({{avgPrice}} €).",
+            "HOLD_STABLE": "Prix stable, proche de la moyenne sur 30 jours ({{avgPrice}} €)."
+        }
+    },
+    "SIGNALS": {
+        "BUY": "À acheter",
+        "SELL": "À vendre",
+        "HOLD": "Conserver"
     }
 }

@@ -2,6 +2,7 @@ export interface Recommendation {
     action: 'BUY' | 'SELL' | 'HOLD';
     signalStrength: 'STRONG' | 'MEDIUM' | 'WEAK';
     reason: string;
+    reasonParams?: string;
 }
 
 export interface PricePoint {

@@ -40,15 +40,17 @@
                         <!-- Recommandation Algo (Placée à côté du titre !) -->
                         <div [class]="getRecommendationBadgeClass(card.recommendation.action)"
                             class="px-5 py-2.5 rounded-xl border flex items-center justify-center shadow-lg">
-                            <span class="text-lg font-black tracking-widest uppercase">{{ card.recommendation.action
-                                }}</span>
+                            <span class="text-lg font-black tracking-widest uppercase">
+                                {{ 'SIGNALS.' + card.recommendation.action | translate }}
+                            </span>
                         </div>
                     </div>
 
                     <!-- Conseil Algo (Sans boîte lourde) -->
                     <p class="text-slate-400 text-sm flex items-center gap-2">
                         <span class="text-amber-400">💡</span>
-                        <strong class="text-slate-200 font-semibold">Analyse :</strong> {{ card.recommendation.reason }}
+                        <strong class="text-slate-200 font-semibold">Analyse :</strong>
+                        {{ card.recommendation.reason | translate: card.recommendation.reasonParams }}
                     </p>
 
                     <!-- Sélecteur d'Édition & Alerte (Intégrés dans la ligne) -->

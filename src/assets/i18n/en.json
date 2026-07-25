@@ -70,5 +70,25 @@
             },
             "DELETE_TOOLTIP": "Remove alert"
         }
+    },
+    "ANALYTICS": {
+        "ERROR": {
+            "NOT_FOUND": "No price data found for this card."
+        },
+        "RECOMMENDATION": {
+            "INSUFFICIENT_DATA": "Insufficient data to make a recommendation.",
+            "INSUFFICIENT_HISTORY": "Insufficient historical data to determine a trend.",
+            "BUY_UNDER_MA30": "Current price is {{percentage}}% below the 30-day moving average.",
+            "SELL_ABOVE_MA30": "Current price is {{percentage}}% above its 30-day moving average (Risk of correction).",
+            "HOLD_NORMAL_RANGE": "Price is fluctuating within its normal range.",
+            "BUY_UNDERVALUED": "Undervalued price: down {{drop}}% compared to its 30-day average (€{{avgPrice}}).",
+            "SELL_PEAK": "Peak price: up {{rise}}% compared to its 30-day average (€{{avgPrice}}).",
+            "HOLD_STABLE": "Stable price, close to the 30-day average (€{{avgPrice}})."
+        }
+    },
+    "SIGNALS": {
+        "BUY": "To Buy",
+        "SELL": "To Sell",
+        "HOLD": "To Hold"
     }
 }

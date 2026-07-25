@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     templateUrl: './card-financial-metrics.component.html'
 })
 export class CardFinancialMetricsComponent {
-    @Input({ required: true }) recommendation!: { action: string; reason: string };
+    @Input({ required: true }) recommendation!: { action: string; reason: string, reasonParams?: string };
     @Input({ required: true }) currentPrice: number = 0;
     @Input({ required: true }) change24h: number = 0;
     @Input({ required: true }) movingAverage30d: number = 0;
