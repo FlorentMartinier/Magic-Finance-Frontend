@@ -26,10 +26,16 @@ export class HeaderComponent {
         this.suggestions.set([]);
         this.searchQuery = cardName;
 
-        // Récupère l'ID Scryfall via le nom exact
-        this.scryfallService.getCardNamed(cardName).subscribe(card => {
-            this.searchQuery = '';
-            this.router.navigate(['/cards', card.id]);
+        // Récupère la carte canonique (Anglaise) via le nom FR ou EN tapé
+        this.scryfallService.getCardNamed(cardName).subscribe({
+            next: (card) => {
+                this.searchQuery = '';
+                // card.id sera TOUJOURS l'ID anglais compatible avec ta BDD !
+                this.router.navigate(['/cards', card.id]);
+            },
+            error: (err) => {
+                console.error('Carte non trouvée sur Scryfall', err);
+            }
         });
     }
 }

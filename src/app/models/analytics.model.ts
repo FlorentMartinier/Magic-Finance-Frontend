@@ -48,8 +48,10 @@ export interface PurchaseUris {
 export interface ScryfallCard {
     id: string;
     name: string;
-    set: string;        // 👈 Code de l'extension (ex: "lea", "fdn")
-    set_name: string;   // 👈 Nom complet (ex: "Limited Edition Alpha")
+    set: string;
+    set_name: string;
+    lang: string;
+    oracle_id: string;
     collector_number?: string;
 
     image_uris?: {
