@@ -1,0 +1,55 @@
+<!-- card-media-links.component.html -->
+<div class="flex flex-col items-center w-full space-y-6">
+    @if (scryfallData) {
+    <!-- Visuel de la carte avec shadow lumineuse -->
+    <div class="relative group w-full max-w-xs sm:max-w-sm">
+        <img [src]="imageUrl" [alt]="scryfallData.name"
+            class="w-full rounded-2xl shadow-2xl border border-slate-800/80 group-hover:scale-102 transition duration-300 bg-slate-950" />
+    </div>
+
+    <!-- Liens Marketplace -->
+    <div class="w-full max-w-xs sm:max-w-sm space-y-2.5">
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block px-1">
+            🛒 Marketplace & Achat
+        </span>
+
+        <div class="grid grid-cols-1 gap-2">
+            @if (purchaseUris?.cardmarket) {
+            <a [href]="purchaseUris.cardmarket" target="_blank" rel="noopener noreferrer"
+                class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700/80 rounded-xl transition-all group shadow-sm">
+                <div class="flex items-center gap-3">
+                    <img src="https://www.google.com/s2/favicons?domain=cardmarket.com&sz=64" alt="Cardmarket"
+                        class="w-4 h-4 rounded" />
+                    <span class="text-sm font-medium group-hover:text-white">Cardmarket</span>
+                </div>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+            </a>
+            }
+
+            @if (purchaseUris?.tcgplayer) {
+            <a [href]="purchaseUris.tcgplayer" target="_blank" rel="noopener noreferrer"
+                class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all group shadow-sm">
+                <div class="flex items-center gap-3">
+                    <img src="https://www.google.com/s2/favicons?domain=tcgplayer.com&sz=64" alt="TCGplayer"
+                        class="w-4 h-4 rounded" />
+                    <span class="text-sm font-medium group-hover:text-white">TCGplayer</span>
+                </div>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+            </a>
+            }
+
+            @if (purchaseUris?.cardhoarder) {
+            <a [href]="purchaseUris.cardhoarder" target="_blank" rel="noopener noreferrer"
+                class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all group shadow-sm">
+                <div class="flex items-center gap-3">
+                    <img src="https://www.google.com/s2/favicons?domain=cardhoarder.com&sz=64" alt="Cardhoarder"
+                        class="w-4 h-4 rounded" />
+                    <span class="text-sm font-medium group-hover:text-white">Cardhoarder (MTGO)</span>
+                </div>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+            </a>
+            }
+        </div>
+    </div>
+    }
+</div>

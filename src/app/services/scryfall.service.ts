@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { ScryfallCard } from '../models/analytics.model';
 
 interface ScryfallAutocompleteResponse {
@@ -25,5 +25,14 @@ export class ScryfallService {
 
     getCardById(id: string): Observable<ScryfallCard> {
         return this.http.get<ScryfallCard>(`${this.baseUrl}/cards/${id}`);
+    }
+
+    getCardPrints(cardName: string): Observable<any[]> {
+        const url = `https://api.scryfall.com/cards/search?q=!"${encodeURIComponent(cardName)}"&unique=prints&order=released`;
+
+        return this.http.get<any>(url).pipe(
+            map(res => res.data || []),
+            catchError(() => of([]))
+        );
     }
 }

@@ -48,15 +48,32 @@ export interface PurchaseUris {
 export interface ScryfallCard {
     id: string;
     name: string;
-    printed_name?: string;
+    set: string;        // 👈 Code de l'extension (ex: "lea", "fdn")
+    set_name: string;   // 👈 Nom complet (ex: "Limited Edition Alpha")
+    collector_number?: string;
+
     image_uris?: {
-        normal: string;
-        large: string;
+        small?: string;
+        normal?: string;
+        large?: string;
+        png?: string;
     };
+
     card_faces?: Array<{
+        name: string;
         image_uris?: {
-            normal: string;
-            large: string;
+            small?: string;
+            normal?: string;
+            large?: string;
         };
     }>;
+
+    prices?: {
+        eur?: string;
+        usd?: string;
+        eur_foil?: string;
+        usd_foil?: string;
+    };
+
+    // Ajoute d'autres champs de Scryfall au besoin
 }

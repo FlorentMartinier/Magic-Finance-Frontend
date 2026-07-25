@@ -1,0 +1,72 @@
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center pt-2">
+
+    <!-- Sélecteur Custom avec Icône d'Extension -->
+    <div class="sm:col-span-2 relative">
+
+        <!-- Bouton principal du Dropdown -->
+        <button type="button" (click)="toggleDropdown()" [disabled]="isLoadingPrints"
+            class="w-full bg-slate-950/80 text-slate-100 text-sm font-medium rounded-xl px-4 py-2.5 flex items-center justify-between border border-slate-700/60 hover:border-slate-600 focus:outline-none focus:border-indigo-500 transition shadow-inner disabled:opacity-50">
+
+            <div class="flex items-center gap-2.5 truncate">
+                @if (cardData?.set) {
+                <!-- Icône Keyrune de l'édition sélectionnée -->
+                <i class="ss ss-{{ cardData?.set?.toLowerCase() }} text-indigo-400 text-lg"></i>
+                }
+                <span class="truncate font-semibold">
+                    {{ cardData?.set_name }}
+                </span>
+            </div>
+
+            <div class="flex items-center gap-2 text-slate-400">
+                @if (isLoadingPrints) {
+                <span class="text-xs text-indigo-400 animate-pulse">Chargement...</span>
+                } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200"
+                    [class.rotate-180]="isOpen()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                }
+            </div>
+        </button>
+
+        <!-- Liste déroulante des éditions -->
+        @if (isOpen()) {
+        <!-- Backdrop transparent pour fermer en cliquant à côté -->
+        <div class="fixed inset-0 z-10" (click)="isOpen.set(false)"></div>
+
+        <div
+            class="absolute left-0 right-0 mt-2 z-20 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto divide-y divide-slate-800/50">
+            @for (print of prints; track print.id) {
+            <button type="button" (click)="onOptionClick(print.id)"
+                [ngClass]="{ 'bg-indigo-600/20': print.id === cardData?.id }"
+                class="w-full text-left px-4 py-3 hover:bg-slate-800/80 transition flex items-center justify-between text-xs sm:text-sm group">
+
+                <div class="flex items-center gap-3 truncate">
+                    <!-- Icône Keyrune dans la liste -->
+                    <i class="ss ss-{{ print.set.toLowerCase() }} text-slate-300 group-hover:text-white text-lg"></i>
+
+                    <div class="truncate">
+                        <span class="font-medium text-slate-200 group-hover:text-white">{{ print.set_name }}</span>
+                        <span class="text-slate-500 text-xs ml-1.5">({{ print.released_at | date:'yyyy' }})</span>
+                    </div>
+                </div>
+
+                <span
+                    class="font-mono font-semibold text-slate-300 group-hover:text-emerald-400 ml-2 whitespace-nowrap">
+                    {{ print.prices.eur ? print.prices.eur + ' €' : (print.prices.usd ? '$' + print.prices.usd : 'N/A')
+                    }}
+                </span>
+            </button>
+            }
+        </div>
+        }
+    </div>
+
+    <!-- Bouton d'Alerte -->
+    @if (cardData?.id; as cardId) {
+    <div>
+        <app-alert-toggle-button [scryfallId]="cardId"></app-alert-toggle-button>
+    </div>
+    }
+
+</div>

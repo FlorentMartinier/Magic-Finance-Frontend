@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { WebPushService } from '../../services/web-push.service';
+
 
 @Component({
     selector: 'app-alert-toggle-button',

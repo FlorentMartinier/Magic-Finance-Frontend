@@ -1,133 +1,76 @@
-<div class="max-w-7xl mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-slate-100">
+
     @if (loading()) {
-    <div class="text-center py-20 text-slate-400 animate-pulse">Chargement de la carte...</div>
+    <div class="flex flex-col items-center justify-center py-24 space-y-4">
+        <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+        <p class="text-slate-400 text-sm font-medium animate-pulse">Chargement des données...</p>
+    </div>
     } @else if (analytics()) {
     @let card = analytics()!;
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- 🌟 GRANDE CARTE UNIQUE (HERO SECTION) -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 backdrop-blur-md shadow-2xl">
 
-        <!-- Visuel Carte & Liens Achat -->
-        <div class="flex flex-col items-center">
-            @if (scryfallData(); as scryfall) {
-            <img [src]="getCardImageUrl(scryfall)" [alt]="scryfall.name"
-                class="w-full max-w-sm rounded-2xl shadow-2xl border border-slate-800 hover:scale-105 transition duration-300" />
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-            <!-- Boutons Marketplace -->
-            <div class="w-full max-w-sm mt-6 space-y-2">
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2 px-1">Acheter la
-                    carte</span>
-
-                <div class="grid grid-cols-1 gap-2">
-                    <!-- Cardmarket -->
-                    @if (card.purchaseUris.cardmarket) {
-                    <a [href]="card.purchaseUris.cardmarket" target="_blank" rel="noopener noreferrer"
-                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <img src="https://www.google.com/s2/favicons?domain=cardmarket.com&sz=64" alt="Cardmarket"
-                                class="w-5 h-5 rounded" />
-                            <span class="text-sm font-medium group-hover:text-white">Cardmarket</span>
-                        </div>
-                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
-                            ↗</span>
-                    </a>
-                    }
-
-                    <!-- TCGplayer -->
-                    @if (card.purchaseUris.tcgplayer) {
-                    <a [href]="card.purchaseUris.tcgplayer" target="_blank" rel="noopener noreferrer"
-                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <img src="https://www.google.com/s2/favicons?domain=tcgplayer.com&sz=64" alt="TCGplayer"
-                                class="w-5 h-5 rounded" />
-                            <span class="text-sm font-medium group-hover:text-white">TCGplayer</span>
-                        </div>
-                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
-                            ↗</span>
-                    </a>
-                    }
-
-                    <!-- Cardhoarder (MTGO) -->
-                    @if (card.purchaseUris.cardhoarder) {
-                    <a [href]="card.purchaseUris.cardhoarder" target="_blank" rel="noopener noreferrer"
-                        class="flex items-center justify-between px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 group shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <img src="https://www.google.com/s2/favicons?domain=cardhoarder.com&sz=64" alt="Cardhoarder"
-                                class="w-5 h-5 rounded" />
-                            <span class="text-sm font-medium group-hover:text-white">Cardhoarder</span>
-                        </div>
-                        <span class="text-slate-500 group-hover:text-indigo-400 text-sm transition-colors">Acheter
-                            ↗</span>
-                    </a>
-                    }
-                </div>
-            </div>
-            }
-        </div>
-
-        <!-- Métriques & Graphique -->
-        <div class="lg:col-span-2 space-y-6">
-            <!-- Entête & Badge Recommandation Backend -->
-            <div
-                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                <div>
-                    <h1 class="text-3xl font-extrabold text-white">{{ scryfallData()?.name }}</h1>
-                </div>
-                <div class="card-actions">
-                    <app-alert-toggle-button [scryfallId]="card.scryfallId"></app-alert-toggle-button>
-                </div>
-
-                <!-- Recommandation -->
-                <div [class]="getRecommendationBadgeClass(card.recommendation.action)"
-                    class="px-4 py-3 rounded-xl border flex flex-col items-end">
-                    <span class="text-xl font-black">{{ card.recommendation.action }}</span>
-                </div>
+            <!-- 1. COLONNE GAUCHE (4/12) : Visuel Carte & Marketplaces -->
+            <div class="lg:col-span-4 flex flex-col items-center space-y-6">
+                <app-card-media-links [scryfallData]="scryfallData()" [purchaseUris]="card.purchaseUris">
+                </app-card-media-links>
             </div>
 
-            <!-- Explication du Conseil -->
-            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 text-slate-300 text-sm">
-                💡 <strong>Analyse :</strong> {{ card.recommendation.reason }}
-            </div>
+            <!-- 2. COLONNE DROITE (8/12) : Infos, Sélecteur, KPIs & Chart -->
+            <div class="lg:col-span-8 space-y-6">
 
-            <!-- Métriques Financières -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <span class="text-xs text-slate-500 uppercase font-semibold">Prix Actuel</span>
-                    <div class="text-2xl font-bold font-mono text-white mt-1">{{ card.currentPrice.toFixed(2) }} €</div>
-                    <span [class]="card.change24h >= 0 ? 'text-emerald-400' : 'text-rose-400'"
-                        class="text-xs font-mono">
-                        {{ card.change24h >= 0 ? '+' : '' }}{{ card.change24h }}% (24h)
-                    </span>
-                </div>
+                <!-- En-tête Unifié : Titre + Badge Recommandation + Sélecteur -->
+                <div class="space-y-4 pb-6 border-b border-slate-800/80">
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <span class="text-xs text-slate-500 uppercase font-semibold">Moyenne 30 j</span>
-                    <div class="text-2xl font-bold font-mono text-slate-200 mt-1">{{ card.movingAverage30d.toFixed(2) }}
-                        €</div>
-                </div>
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <!-- Titre & Badge Édition -->
+                        <div>
+                            <span
+                                class="text-[11px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                                {{ scryfallData()?.set | uppercase }} — {{ scryfallData()?.set_name }}
+                            </span>
+                            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">
+                                {{ scryfallData()?.name }}
+                            </h1>
+                        </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <span class="text-xs text-slate-500 uppercase font-semibold">Volatilité (σ)</span>
-                    <div class="text-2xl font-bold font-mono text-amber-400 mt-1">{{ card.volatility.toFixed(2) }}</div>
-                </div>
-
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <span class="text-xs text-slate-500 uppercase font-semibold">Min / Max</span>
-                    <div class="text-sm font-bold font-mono text-slate-300 mt-2">
-                        <span class="text-emerald-400">{{ card.allTimeLow }}€</span> / <span class="text-rose-400">{{
-                            card.allTimeHigh }}€</span>
+                        <!-- Recommandation Algo (Placée à côté du titre !) -->
+                        <div [class]="getRecommendationBadgeClass(card.recommendation.action)"
+                            class="px-5 py-2.5 rounded-xl border flex items-center justify-center shadow-lg">
+                            <span class="text-lg font-black tracking-widest uppercase">{{ card.recommendation.action
+                                }}</span>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Canvas Graphique -->
-            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                <h3 class="text-lg font-bold text-white mb-4">Historique de prix</h3>
-                <div class="h-64 relative">
-                    <canvas #chartCanvas></canvas>
+                    <!-- Conseil Algo (Sans boîte lourde) -->
+                    <p class="text-slate-400 text-sm flex items-center gap-2">
+                        <span class="text-amber-400">💡</span>
+                        <strong class="text-slate-200 font-semibold">Analyse :</strong> {{ card.recommendation.reason }}
+                    </p>
+
+                    <!-- Sélecteur d'Édition & Alerte (Intégrés dans la ligne) -->
+                    <app-card-print-selector [cardData]="scryfallData()" [prints]="prints()"
+                        [isLoadingPrints]="isLoadingPrints()" (onSelectPrint)="onSelectPrint($event)">
+                    </app-card-print-selector>
                 </div>
+
+                <!-- KPIs Financiers (Design minimaliste sans sous-cartes opaques) -->
+                <app-card-financial-metrics [recommendation]="card.recommendation" [currentPrice]="card.currentPrice"
+                    [change24h]="card.change24h" [movingAverage30d]="card.movingAverage30d"
+                    [volatility]="card.volatility" [allTimeLow]="card.allTimeLow" [allTimeHigh]="card.allTimeHigh">
+                </app-card-financial-metrics>
+
+                <!-- Graphique Dépouillé (Agréable et àéré) -->
+                <app-card-price-chart [chartData]="card.priceHistory">
+                </app-card-price-chart>
+
             </div>
 
         </div>
+
     </div>
     }
 </div>
