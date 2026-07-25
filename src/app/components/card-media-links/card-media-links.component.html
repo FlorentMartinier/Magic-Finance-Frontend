@@ -9,10 +9,6 @@
 
     <!-- Liens Marketplace -->
     <div class="w-full max-w-xs sm:max-w-sm space-y-2.5">
-        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block px-1">
-            🛒 Marketplace & Achat
-        </span>
-
         <div class="grid grid-cols-1 gap-2">
             @if (purchaseUris?.cardmarket) {
             <a [href]="purchaseUris.cardmarket" target="_blank" rel="noopener noreferrer"
@@ -22,7 +18,9 @@
                         class="w-4 h-4 rounded" />
                     <span class="text-sm font-medium group-hover:text-white">Cardmarket</span>
                 </div>
-                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">
+                    {{ 'CARD_DETAIL.BUY' | translate }} ↗
+                </span>
             </a>
             }
 
@@ -34,7 +32,9 @@
                         class="w-4 h-4 rounded" />
                     <span class="text-sm font-medium group-hover:text-white">TCGplayer</span>
                 </div>
-                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">
+                    {{ 'CARD_DETAIL.BUY' | translate }} ↗
+                </span>
             </a>
             }
 
@@ -46,7 +46,9 @@
                         class="w-4 h-4 rounded" />
                     <span class="text-sm font-medium group-hover:text-white">Cardhoarder (MTGO)</span>
                 </div>
-                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">Acheter ↗</span>
+                <span class="text-xs text-slate-500 group-hover:text-indigo-400 font-medium">
+                    {{ 'CARD_DETAIL.BUY' | translate }} ↗
+                </span>
             </a>
             }
         </div>

@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { WebPushService } from '../../services/web-push.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
     selector: 'app-alert-toggle-button',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TranslatePipe],
     templateUrl: './alert-toggle-button.component.html',
 })
 export class AlertToggleButtonComponent implements OnInit {
     @Input({ required: true }) scryfallId!: string;
 
     private webPushService = inject(WebPushService);
+    private translate = inject(TranslateService);
 
     isSubscribed = false;
     isLoading = false;
@@ -41,7 +43,7 @@ export class AlertToggleButtonComponent implements OnInit {
             }
         } catch (error) {
             console.error('Erreur lors du changement d\'abonnement', error);
-            alert('Impossible de modifier les alertes. Vérifiez que les notifications sont autorisées.');
+            alert(this.translate.instant('ALERT_BUTTON.ERROR'));
         } finally {
             this.isLoading = false;
         }

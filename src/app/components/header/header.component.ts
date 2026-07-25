@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ScryfallService } from '../../services/scryfall.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterLink, FormsModule],
+    imports: [RouterLink, FormsModule, TranslatePipe],
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {

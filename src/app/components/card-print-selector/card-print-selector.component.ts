@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertToggleButtonComponent } from '../alert-toggle/alert-toggle-button.component';
 import { ScryfallCard } from '../../models/analytics.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface CardPrint {
     id: string;
@@ -17,7 +18,7 @@ export interface CardPrint {
 @Component({
     selector: 'app-card-print-selector',
     standalone: true,
-    imports: [CommonModule, AlertToggleButtonComponent],
+    imports: [CommonModule, AlertToggleButtonComponent, TranslatePipe],
     templateUrl: './card-print-selector.component.html'
 })
 export class CardPrintSelectorComponent {

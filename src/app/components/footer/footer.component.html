@@ -5,8 +5,9 @@
             <!-- Brand & Copyright avec ton nom -->
             <div class="flex flex-col items-center md:items-start gap-2">
                 <p class="text-xs text-slate-500 text-center md:text-left">
-                    © {{ currentYear }} MTG Finance — Développé par <a href="https://florent-martinier.netlify.app/"
-                        target="_blank" class="text-slate-400 hover:text-indigo-400 underline transition">Florent
+                    © {{ currentYear }} MTG Finance — {{ 'FOOTER.DEVELOPED_BY' | translate }}
+                    <a href="https://florent-martinier.netlify.app/" target="_blank"
+                        class="text-slate-400 hover:text-indigo-400 underline transition">Florent
                         Martinier</a>.
                 </p>
             </div>
@@ -30,8 +31,7 @@
 
         <!-- Mention Légale MTG -->
         <div class="mt-6 pt-4 border-t border-slate-900 text-[11px] text-slate-600 text-center leading-relaxed">
-            Wizards of the Coast, Magic: The Gathering et leurs logos respectifs sont des marques déposées de Wizards of
-            the Coast LLC. Ce site n'est pas affilié, sponsorisé ni approuvé par Wizards of the Coast.
+            {{ 'FOOTER.DISCLAIMER' | translate }}
         </div>
     </div>
 </footer>

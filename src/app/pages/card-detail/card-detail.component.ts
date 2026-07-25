@@ -10,6 +10,7 @@ import { CardPrintSelectorComponent } from '../../components/card-print-selector
 import { CardAnalytics, ScryfallCard } from '../../models/analytics.model';
 import { AnalyticsService } from '../../services/analytics.service';
 import { ScryfallService } from '../../services/scryfall.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 Chart.register(...registerables);
 
@@ -20,7 +21,8 @@ Chart.register(...registerables);
         CardMediaLinksComponent,
         CardPrintSelectorComponent,
         CardFinancialMetricsComponent,
-        CardPriceChartComponent
+        CardPriceChartComponent,
+        TranslatePipe
     ],
     standalone: true,
     templateUrl: './card-detail.component.html'

@@ -2,11 +2,12 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { WebPushService, UserAlert } from '../../services/web-push.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-my-alerts',
     standalone: true,
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, TranslatePipe],
     templateUrl: './my-alerts.component.html'
 })
 export class MyAlertsComponent implements OnInit {

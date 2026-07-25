@@ -2,11 +2,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScryfallCard } from '../../models/analytics.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-card-media-links',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TranslatePipe],
     templateUrl: './card-media-links.component.html'
 })
 export class CardMediaLinksComponent {

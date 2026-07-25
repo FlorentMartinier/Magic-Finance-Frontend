@@ -1,17 +1,20 @@
 // card-price-chart.component.ts
-import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 Chart.register(...registerables);
 
 @Component({
     selector: 'app-card-price-chart',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TranslatePipe],
     templateUrl: './card-price-chart.component.html'
 })
 export class CardPriceChartComponent implements OnChanges, OnDestroy {
+    private translate = inject(TranslateService);
+
     @Input() chartData: Array<{ date: string; price: number }> = [];
 
     private canvasElement: HTMLCanvasElement | null = null;
@@ -51,7 +54,7 @@ export class CardPriceChartComponent implements OnChanges, OnDestroy {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Prix (€)',
+                        label: this.translate.instant('CARD_DETAIL.price'),
                         data: prices,
                         borderColor: '#38bdf8',
                         backgroundColor: 'rgba(56, 189, 248, 0.1)',

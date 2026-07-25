@@ -1,13 +1,19 @@
 <div class="max-w-7xl mx-auto px-4 py-8 space-y-8">
     <div class="flex justify-between items-center">
         <div>
-            <h1 class="text-3xl font-extrabold text-white">Aperçu du Marché</h1>
-            <p class="text-slate-400 text-sm">Tendances globales et opportunités spéculatives</p>
+            <h1 class="text-3xl font-extrabold text-white">
+                {{ 'MARKET_OVERVIEW.TITLE' | translate }}
+            </h1>
+            <p class="text-slate-400 text-sm">
+                {{ 'MARKET_OVERVIEW.SUBTITLE' | translate }}
+            </p>
         </div>
     </div>
 
     @if (loading()) {
-    <div class="text-center py-20 text-slate-400 animate-pulse">Chargement des données financières...</div>
+    <div class="text-center py-20 text-slate-400 animate-pulse">
+        {{ 'MARKET_OVERVIEW.LOADING' | translate }}
+    </div>
     } @else if (data()) {
     @let dashboard = data()!;
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -15,7 +21,7 @@
         <!-- Top Gainers -->
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg">
             <h2 class="text-emerald-400 font-bold text-lg mb-4 flex items-center gap-2">
-                <span>📈</span> Top Gainers (24h)
+                <span>📈</span> {{ 'MARKET_OVERVIEW.TOP_GAINERS' | translate }}
             </h2>
             <div class="space-y-3">
                 @for (card of dashboard.topGainers; track card.scryfallId) {
@@ -34,7 +40,7 @@
         <!-- Top Losers -->
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg">
             <h2 class="text-rose-400 font-bold text-lg mb-4 flex items-center gap-2">
-                <span>📉</span> Top Losers (24h)
+                <span>📉</span> {{ 'MARKET_OVERVIEW.TOP_LOSERS' | translate }}
             </h2>
             <div class="space-y-3">
                 @for (card of dashboard.topLosers; track card.scryfallId) {
@@ -53,7 +59,7 @@
         <!-- Fortes Volatilités -->
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg">
             <h2 class="text-amber-400 font-bold text-lg mb-4 flex items-center gap-2">
-                <span>⚡</span> Volatilité Élevée (30j)
+                <span>⚡</span> {{ 'MARKET_OVERVIEW.HIGH_VOLATILITY' | translate }}
             </h2>
             <div class="space-y-3">
                 @for (card of dashboard.mostVolatile; track card.scryfallId) {

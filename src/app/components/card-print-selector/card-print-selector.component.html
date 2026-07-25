@@ -19,7 +19,7 @@
 
             <div class="flex items-center gap-2 text-slate-400">
                 @if (isLoadingPrints) {
-                <span class="text-xs text-indigo-400 animate-pulse">Chargement...</span>
+                <span class="text-xs text-indigo-400 animate-pulse">{{ 'CARD_SELECTOR.LOADING' | translate }}</span>
                 } @else {
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200"
                     [class.rotate-180]="isOpen()" fill="none" viewBox="0 0 24 24" stroke="currentColor">

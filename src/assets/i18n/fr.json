@@ -1,0 +1,74 @@
+{
+    "CARD_SELECTOR": {
+        "LOADING": "Chargement..."
+    },
+    "CARD_METRICS": {
+        "CURRENT_PRICE": "Prix Actuel",
+        "AVERAGE_30D": "Moyenne 30j",
+        "MOVING_SMOOTHING": "Lissage mobile",
+        "VOLATILITY": "Volatilité (σ)",
+        "RISK_LEVEL": "Niveau de risque",
+        "MIN_MAX": "Min / Max",
+        "HISTORY": "Historique"
+    },
+    "ALERT_BUTTON": {
+        "SUBSCRIBE": "M'alerter des opportunités",
+        "UNSUBSCRIBE": "Désactiver les alertes",
+        "SAVING": "Enregistrement...",
+        "ERROR": "Impossible de modifier les alertes. Vérifiez que les notifications sont autorisées"
+    },
+    "CARD_DETAIL": {
+        "PRICE_HISTORY": "Historique des prix",
+        "AVERAGE_30D": "Moyenne 30 jours",
+        "BUY_SIGNAL": "Signal d'Achat",
+        "SELL_SIGNAL": "Signal de Vente",
+        "PRINTS": "Éditions disponibles",
+        "BUY": "Acheter",
+        "PRICE": "Prix (€)",
+        "DATA_LOADING": "Chargement des données..."
+    },
+    "NAVBAR": {
+        "SEARCH_PLACEHOLDER": "Rechercher une carte (ex: Black Lotus, Orcish Bowmasters)...",
+        "VIEW_CARD": "Voir fiche",
+        "MY_ALERTS": "Mes Alertes"
+    },
+    "MARKET_OVERVIEW": {
+        "TITLE": "Aperçu du Marché",
+        "SUBTITLE": "Tendances globales et opportunités spéculatives",
+        "LOADING": "Chargement des données financières...",
+        "TOP_GAINERS": "Plus fortes hausses (24h)",
+        "TOP_LOSERS": "Plus fortes baisses (24h)",
+        "HIGH_VOLATILITY": "Volatilité Élevée (30j)"
+    },
+    "FOOTER": {
+        "DEVELOPED_BY": "Développé par",
+        "DISCLAIMER": "Wiaaazards of the Coast, Magic: The Gathering et leurs logos respectifs sont des marques déposées de Wizards of the Coast LLC."
+    },
+    "PRICE_ALERTS": {
+        "TITLE": "Mes Alertes Prix",
+        "SUBTITLE": "Surveillez en temps réel les mouvements du marché et recevez des signaux d'opportunités.",
+        "CARDS_TRACKED_ONE": "carte suivie",
+        "CARDS_TRACKED_MANY": "cartes suivies",
+        "HOW_IT_WORKS_BTN": "Comment ça marche ?",
+        "TOOLTIP": {
+            "TITLE": "Fonctionnement des alertes",
+            "DESCRIPTION": "Les notifications sont envoyées <strong class=\"text-indigo-300\">automatiquement lorsqu'un signal fort (Achat/Vente) est détecté</strong> par rapport à la moyenne du marché sur 30 jours.",
+            "MOBILE_INFO": "📱 <strong class=\"font-semibold\">Sur mobile :</strong> Visitez le site depuis votre smartphone pour activer les notifications directement sur votre téléphone."
+        },
+        "LOADING": "Récupération de vos abonnements en cours...",
+        "EMPTY": {
+            "TITLE": "Aucune alerte configurée",
+            "DESCRIPTION": "Parcourez le catalogue, consultez la fiche d'une carte et activez le bouton <span class=\"text-indigo-300 font-medium\">\"M'alerter\"</span> pour être notifié des opportunités d'achat ou de vente.",
+            "EXPLORE_BTN": "Explorer le marché"
+        },
+        "CARD_ITEM": {
+            "CURRENT_PRICE": "Prix actuel :",
+            "SIGNAL": {
+                "BUY": "À acheter",
+                "SELL": "À vendre",
+                "ACTIVE": "Surveillance active"
+            },
+            "DELETE_TOOLTIP": "Supprimer l'alerte"
+        }
+    }
+}

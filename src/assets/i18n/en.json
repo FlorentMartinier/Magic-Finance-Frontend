@@ -1,0 +1,74 @@
+{
+    "CARD_SELECTOR": {
+        "LOADING": "Loading..."
+    },
+    "CARD_METRICS": {
+        "CURRENT_PRICE": "Current Price",
+        "AVERAGE_30D": "30d Average",
+        "MOVING_SMOOTHING": "Moving average",
+        "VOLATILITY": "Volatility (σ)",
+        "RISK_LEVEL": "Risk level",
+        "MIN_MAX": "Min / Max",
+        "HISTORY": "All-time history"
+    },
+    "ALERT_BUTTON": {
+        "SUBSCRIBE": "Alert me of opportunities",
+        "UNSUBSCRIBE": "Disable alerts",
+        "SAVING": "Saving...",
+        "ERROR": "Impossible to modify alerts. Please verify that notifications are allowed"
+    },
+    "CARD_DETAIL": {
+        "PRICE_HISTORY": "Price History",
+        "AVERAGE_30D": "30-day Average",
+        "BUY_SIGNAL": "Buy Signal",
+        "SELL_SIGNAL": "Sell Signal",
+        "PRINTS": "Available Prints",
+        "BUY": "Buy",
+        "PRICE": "Price (€)",
+        "DATA_LOADING": "Data loading..."
+    },
+    "NAVBAR": {
+        "SEARCH_PLACEHOLDER": "Search for a card (e.g. Black Lotus, Orcish Bowmasters)...",
+        "VIEW_CARD": "View card",
+        "MY_ALERTS": "My Alerts"
+    },
+    "FOOTER": {
+        "DEVELOPED_BY": "Developed by",
+        "DISCLAIMER": "Wizards of the Coast, Magic: The Gathering, and their respective logos are registered trademarks of Wizards of the Coast LLC."
+    },
+    "MARKET_OVERVIEW": {
+        "TITLE": "Market Overview",
+        "SUBTITLE": "Global trends and speculative opportunities",
+        "LOADING": "Loading financial data...",
+        "TOP_GAINERS": "Top Gainers (24h)",
+        "TOP_LOSERS": "Top Losers (24h)",
+        "HIGH_VOLATILITY": "High Volatility (30d)"
+    },
+    "PRICE_ALERTS": {
+        "TITLE": "My Price Alerts",
+        "SUBTITLE": "Monitor market movements in real time and receive signal opportunities.",
+        "CARDS_TRACKED_ONE": "card tracked",
+        "CARDS_TRACKED_MANY": "cards tracked",
+        "HOW_IT_WORKS_BTN": "How it works?",
+        "TOOLTIP": {
+            "TITLE": "How alerts work",
+            "DESCRIPTION": "Notifications are sent <strong class=\"text-indigo-300\">automatically when a strong signal (Buy/Sell) is detected</strong> compared to the 30-day market average.",
+            "MOBILE_INFO": "📱 <strong class=\"font-semibold\">On mobile:</strong> Visit the site from your smartphone to enable notifications directly on your phone."
+        },
+        "LOADING": "Fetching your subscriptions...",
+        "EMPTY": {
+            "TITLE": "No alerts configured",
+            "DESCRIPTION": "Browse the catalog, check out a card page, and click the <span class=\"text-indigo-300 font-medium\">\"Alert Me\"</span> button to get notified about buy or sell opportunities.",
+            "EXPLORE_BTN": "Explore the market"
+        },
+        "CARD_ITEM": {
+            "CURRENT_PRICE": "Current price:",
+            "SIGNAL": {
+                "BUY": "Buy",
+                "SELL": "Sell",
+                "ACTIVE": "Actively monitoring"
+            },
+            "DELETE_TOOLTIP": "Remove alert"
+        }
+    }
+}

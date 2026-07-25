@@ -2,11 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AnalyticsService } from '../../services/analytics.service';
 import { DashboardAnalytics } from '../../models/analytics.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [RouterLink],
+    imports: [RouterLink, TranslatePipe],
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
