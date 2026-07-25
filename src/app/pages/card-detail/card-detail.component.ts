@@ -5,11 +5,14 @@ import { Chart, registerables } from 'chart.js';
 import { AnalyticsService } from '../../services/analytics.service';
 import { ScryfallService } from '../../services/scryfall.service';
 import { CardAnalytics, ScryfallCard } from '../../models/analytics.model';
+import { CommonModule } from '@angular/common';
+import { AlertToggleButtonComponent } from '../../components/card-detail/card-detail.component';
 
 Chart.register(...registerables);
 
 @Component({
     selector: 'app-card-detail',
+    imports: [CommonModule, AlertToggleButtonComponent],
     standalone: true,
     templateUrl: './card-detail.component.html'
 })
@@ -32,6 +35,7 @@ export class CardDetailComponent implements OnInit {
     scryfallData = signal<ScryfallCard | null>(null);
     loading = signal(true);
     chart?: Chart;
+    card: any;
 
     ngOnInit() {
         this.route.params.subscribe(params => {
