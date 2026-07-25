@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { WebPushService, UserAlert } from '../../services/web-push.service';
@@ -14,9 +14,15 @@ export class MyAlertsComponent implements OnInit {
 
     alerts: UserAlert[] = [];
     isLoading = true;
+    isTooltipOpen = signal(false);
 
     async ngOnInit() {
         await this.loadAlerts();
+    }
+
+    toggleTooltip(event: MouseEvent): void {
+        event.stopPropagation(); // Évite de fermer immédiatement si clic parent
+        this.isTooltipOpen.update(v => !v);
     }
 
     async loadAlerts() {
